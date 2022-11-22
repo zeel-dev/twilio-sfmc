@@ -27,10 +27,10 @@ def save():
 def validate():
     pass
 
-@app.post('/publish/')
+@app.post('/publish')
 def publish():
     # The sample app
-    return {success: True}
+    return {"success": True}
 
 
 def in_whitelist(to_number):
@@ -47,7 +47,7 @@ def in_whitelist(to_number):
 
     return to_number in white_list
 
-@app.post('/journeybuilder/execute/')
+@app.post('/journeybuilder/execute')
 def execute(body: dict):
     print('hi')
     print(body)
@@ -102,4 +102,4 @@ def execute(body: dict):
 
 
 
-#app.mount("/", StaticFiles(directory="public", html = True), name="static")
+app.mount("/", StaticFiles(directory="public", html = True), name="static")
