@@ -6,7 +6,7 @@ const Path = require('path');
 const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
 var http = require('https');
 
-const axios = require('axios');
+//const axios = require('axios');
 const { SIGKILL } = require('constants');
 
 exports.logExecuteData = [];
@@ -113,6 +113,8 @@ function sendToBraze(email, phone, message) {
     const url = "https://api.kustomerapp.com/v1/hooks/form/" + brazeSuffix;
     var payload = {"to_email":email,"to_phone":phone,"message1":message};
 
+    console.log("need to install axios to send to braze");
+    /*
     axios.post(url, payload).then(
         (response)=>{
             console.log("in callback after kustomerapp call");
@@ -124,21 +126,7 @@ function sendToBraze(email, phone, message) {
         console.log("error in Kustomer request");
         console.error(e);
     })
-    request.post(
-        url,
-        payload,
-        function (error, response, body) {
-            console.log("callback from Braze request");
-            if (!error && response.statusCode == 200) {
-                console.log(body);
-            } else {
-                console.log("some sort of error");
-                console.log(error);
-                console.log(response);
-                console.log(body);
-            }
-        }
-    );
+    */
 
 }
 
