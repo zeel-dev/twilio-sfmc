@@ -116,7 +116,7 @@ function sendToKustomer(email, phone, message) {
     var payload = {"to_phone":phone,"message1":message};
 
     console.log("need to install axios to send to braze");
-    /*
+    
     axios.post(url, payload).then(
         (response)=>{
             console.log("in callback after kustomerapp call");
@@ -128,7 +128,7 @@ function sendToKustomer(email, phone, message) {
         console.log("error in Kustomer request");
         console.error(e);
     })
-    */
+    
 
 }
 
@@ -179,6 +179,9 @@ exports.execute = function (req, res) {
                 .then(message => console.log(message.sid))
                 .done();
             console.log("created the message");
+
+            sendToKustomer('david.ball+braze@zeel.com',to,body);
+
         }
         else {
             console.log(to, "not in whitelist");
@@ -188,8 +191,6 @@ exports.execute = function (req, res) {
             });
         }
 
-
-        sendToKustomer('david.ball+braze@zeel.com',to,body);
         // FOR TESTING
         logData(req);
         return res.status(200).json({
