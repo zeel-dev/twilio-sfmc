@@ -6,7 +6,7 @@ const Path = require('path');
 const JWT = require(Path.join(__dirname, '..', 'lib', 'jwtDecoder.js'));
 var http = require('https');
 
-//const axios = require('axios');
+const axios = require('axios');
 const { SIGKILL } = require('constants');
 
 exports.logExecuteData = [];
@@ -108,10 +108,12 @@ exports.save = function (req, res) {
 };
 
 
-function sendToBraze(email, phone, message) {
+function sendToKustomer(email, phone, message) {
     const brazeSuffix = process.env.brazeSuffix;
     const url = "https://api.kustomerapp.com/v1/hooks/form/" + brazeSuffix;
-    var payload = {"to_email":email,"to_phone":phone,"message1":message};
+    //var payload = {"to_email":email,"to_phone":phone,"message1":message};
+    // we think we don't have to include email but not 100% sure yet
+    var payload = {"to_phone":phone,"message1":message};
 
     console.log("need to install axios to send to braze");
     /*
@@ -187,7 +189,7 @@ exports.execute = function (req, res) {
         }
 
 
-        sendToBraze('david.ball+braze@zeel.com',to,body);
+        sendToKustomer('david.ball+braze@zeel.com',to,body);
         // FOR TESTING
         logData(req);
         return res.status(200).json({
