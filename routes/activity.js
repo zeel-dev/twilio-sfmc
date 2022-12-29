@@ -167,7 +167,7 @@ exports.execute = function (req, res) {
 
         const client = require('twilio')(accountSid, authToken);
 
-        if (in_whitelist(to)) {
+        // if (in_whitelist(to)) {
             console.log(to, " is in whitelist, about to send");
             client.messages
                 .create({
@@ -180,16 +180,16 @@ exports.execute = function (req, res) {
                 .done();
             console.log("created the message");
 
-            sendToKustomer('david.ball+braze@zeel.com',to,body);
+            sendToKustomer('david.ball+kustomer@zeel.com',to,body);
 
-        }
-        else {
-            console.log(to, "not in whitelist");
-            return res.status(500).json({
-                message: "recipient_mobile not in whitelist",
-                success: false,
-            });
-        }
+        // }
+        // else {
+        //     console.log(to, "not in whitelist");
+        //     return res.status(500).json({
+        //         message: "recipient_mobile not in whitelist",
+        //         success: false,
+        //     });
+        // }
 
         // FOR TESTING
         logData(req);
