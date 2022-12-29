@@ -180,7 +180,7 @@ exports.execute = function (req, res) {
                 .done();
             console.log("created the message");
 
-            sendToKustomer('david.ball+braze@zeel.com',to,body);
+            sendToKustomer('david.ball+kustomer@zeel.com',to,body);
 
         // }
         // else {
