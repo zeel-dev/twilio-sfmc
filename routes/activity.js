@@ -114,8 +114,6 @@ function sendToKustomer(email, phone, message) {
     //var payload = {"to_email":email,"to_phone":phone,"message1":message};
     // we think we don't have to include email but not 100% sure yet
     var payload = {"to_phone":phone,"message1":message};
-
-    console.log("need to install axios to send to braze");
     
     axios.post(url, payload).then(
         (response)=>{
@@ -168,7 +166,7 @@ exports.execute = function (req, res) {
         const client = require('twilio')(accountSid, authToken);
 
         // if (in_whitelist(to)) {
-            console.log(to, " is in whitelist, about to send");
+            //console.log(to, " is in whitelist, about to send");
             client.messages
                 .create({
                     body: body,
@@ -180,7 +178,9 @@ exports.execute = function (req, res) {
                 .done();
             console.log("created the message");
 
-            sendToKustomer('david.ball+kustomer@zeel.com',to,body);
+            const email_for_kustomer = requestBody.contact_key || 'david.ball+kustomer@zeel.com';
+            
+            sendToKustomer(email_for_kustomer,to,body);
 
         // }
         // else {
