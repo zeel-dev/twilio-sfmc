@@ -151,10 +151,6 @@ function in_whitelist(to_number) {
 exports.execute = function (req, res) {
     try {
 
-
-        console.log("begin execute");
-        console.log("inArguments");
-        console.log(req.body.inArguments);
         var requestBody = req.body.inArguments[0];
 
         const accountSid = process.env.accountSid;
