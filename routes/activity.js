@@ -165,6 +165,7 @@ exports.execute = function (req, res) {
 
         const client = require('twilio')(accountSid, authToken);        
 
+        if (to) {
         // if (in_whitelist(to)) {
             //console.log(to, " is in whitelist, about to send");
             client.messages
@@ -174,14 +175,18 @@ exports.execute = function (req, res) {
                     to: to,
                     from: '469335'
                 })
-                .catch(message => console.log('error from twilio', message))
-                .then(message => console.log(message.sid))
+                .catch(message => console.log('error from twilio', message))                
                 .done();
+                /* .then(message => console.log(message.sid)) */
             console.log("created the message");
 
             const email_for_kustomer = requestBody.contact_key || 'david.ball+kustomer@zeel.com';
             
             sendToKustomer(email_for_kustomer,to,body);
+        }
+        else {
+            console.log("No TO provided, skiping twilio and kustomer")
+        }
 
         // }
         // else {
