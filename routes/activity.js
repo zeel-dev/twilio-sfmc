@@ -176,7 +176,7 @@ exports.execute = function (req, res) {
                     from: '469335'
                 })
                 .catch(message => console.log('error from twilio', message))                
-                .done();
+                .done(function(e){console.log("done twilio chain",e)});
                 /* .then(message => console.log(message.sid)) */
             console.log("created the message");
 
