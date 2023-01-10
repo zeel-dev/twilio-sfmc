@@ -175,13 +175,27 @@ exports.execute = function (req, res) {
                     to: to,
                     from: '469335'
                 })
-                .catch(message => console.log('error from twilio', message))                
-                .done(function(e){console.log("done twilio chain",e)});
+                .then(message => console.log(message.sid))
+                .catch(twilio_error => {
+                    console.log('error from twilio', twilio_error);
+                    if(JSON.stringify(twilio_error).includes('469335')){
+                        console.log('Message sent from short code failed. ');
+                        client.messages
+                        .create({
+                            body: body,
+                            messagingService: messagingService,
+                            to: to,
+                            from: '+13477637900'
+                        })
+                        .then(message => console.log(message.sid))
+                        .catch(twilio_error => {
+                            console.log('error from twilio (Catch Block) ', twilio_error);
+                        })
+                    }
+                });
                 /* .then(message => console.log(message.sid)) */
             console.log("created the message");
-
             const email_for_kustomer = requestBody.contact_key || 'david.ball+kustomer@zeel.com';
-            
             sendToKustomer(email_for_kustomer,to,body);
         }
         else {
