@@ -57,6 +57,10 @@ define([
                 if (key === 'eventDefinitionKey') {
                     $('#eventDefinitionKey').val(val);
                 }
+
+                if (key === 'isSendToKustomer') {
+                    $('#isSendToKustomer').val(val);
+                }
             })
         });
 

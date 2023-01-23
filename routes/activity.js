@@ -162,7 +162,8 @@ exports.execute = function (req, res) {
         const to = requestBody.recipient_mobile;
         
         const body = requestBody.body;
-
+        const isSendToKustomer = requestBody.isSendToKustomer;
+        console.log("isSendToKustomer value: " + isSendToKustomer);
         const client = require('twilio')(accountSid, authToken);        
 
         if (to) {
@@ -196,7 +197,7 @@ exports.execute = function (req, res) {
                 /* .then(message => console.log(message.sid)) */
             console.log("created the message");
             const email_for_kustomer = requestBody.contact_key || 'david.ball+kustomer@zeel.com';
-            sendToKustomer(email_for_kustomer,to,body);
+            if(isSendToKustomer) sendToKustomer(email_for_kustomer,to,body);
         }
         else {
             console.log("No TO provided, skiping twilio and kustomer")
