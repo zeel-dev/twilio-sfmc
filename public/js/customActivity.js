@@ -57,6 +57,10 @@ define([
                 if (key === 'eventDefinitionKey') {
                     $('#eventDefinitionKey').val(val);
                 }
+
+                if (key === 'isSendToKustomer') {
+                    $('#isSendToKustomer').val(val);
+                }
             })
         });
 
@@ -85,7 +89,8 @@ define([
         var authToken = $('#authToken').val();
         var messagingService = $('#messagingService').val();
         var body = $('#messageBody').val();
-        var eventDefinitionKey = $('#eventDefinitionKey').val()
+        var eventDefinitionKey = $('#eventDefinitionKey').val();
+        var isSendToKustomer = $('#isSendToKustomer').val();
 
         payload['arguments'].execute.inArguments = [{
             "accountSid": accountSid,
@@ -94,7 +99,8 @@ define([
             "body": body,
             "eventDefinitionKey":eventDefinitionKey,
             "contact_key":"{{Contact.Key}}",
-            "recipient_mobile":"{{Event." + eventDefinitionKey + ".BookingUserMobile}}"
+            "recipient_mobile":"{{Event." + eventDefinitionKey + ".BookingUserMobile}}",
+            "isSendToKustomer" : isSendToKustomer
         }];
         //"to": "{{Contact.Email}}"
         payload['metaData'].isConfigured = true;
