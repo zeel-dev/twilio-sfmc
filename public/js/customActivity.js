@@ -59,7 +59,7 @@ define([
                 }
 
                 if (key === 'isSendToKustomer') {
-                    $('#isSendToKustomer').val(val);
+                    $('#isSendToKustomer').prop('checked', val);
                 }
             })
         });
@@ -90,7 +90,7 @@ define([
         var messagingService = $('#messagingService').val();
         var body = $('#messageBody').val();
         var eventDefinitionKey = $('#eventDefinitionKey').val();
-        var isSendToKustomer = $('#isSendToKustomer').val();
+        var isSendToKustomer = $('#isSendToKustomer').prop('checked') || false;
 
         payload['arguments'].execute.inArguments = [{
             "accountSid": accountSid,
