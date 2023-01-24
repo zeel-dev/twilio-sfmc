@@ -59,7 +59,7 @@ define([
                 }
 
                 if (key === 'isSendToKustomer') {
-                    $('#isSendToKustomer').prop('checked', true);
+                    $('#isSendToKustomer').prop('checked', val);
                 }
             })
         });
