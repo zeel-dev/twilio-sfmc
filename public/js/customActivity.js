@@ -99,7 +99,8 @@ define([
             "body": body,
             "eventDefinitionKey":eventDefinitionKey,
             "contact_key":"{{Contact.Key}}",
-            "recipient":"{{Event." + eventDefinitionKey + "}}",
+            "recipient_bookingUserMobile":"{{Event." + eventDefinitionKey + ".BookingUserMobile}}",
+            "recipient_mobile":"{{Event." + eventDefinitionKey + ".RecipientMobile}}",
             "phone_num":"{{Event." + eventDefinitionKey + ".Phone}}",
             "isSendToKustomer" : isSendToKustomer
         }];
