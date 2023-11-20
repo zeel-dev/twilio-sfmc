@@ -100,6 +100,7 @@ define([
             "eventDefinitionKey":eventDefinitionKey,
             "contact_key":"{{Contact.Key}}",
             "recipient":"{{Event." + eventDefinitionKey + "}}",
+            "phone_num":"{{Event." + eventDefinitionKey + ".Phone}}",
             "isSendToKustomer" : isSendToKustomer
         }];
         //"to": "{{Contact.Email}}"
