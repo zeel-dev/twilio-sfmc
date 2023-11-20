@@ -160,7 +160,7 @@ exports.execute = function (req, res) {
         const messagingService = process.env.messagingService;
         
         const recipientData = requestBody.recipient || {};
-        console.log("recipientData: " + recipientData);
+        console.log("recipientData: " + JSON.stringify(recipientData, null, 2));
         const to = recipientData.Phone || recipientData.RecipientMobile || recipientData.BookingUserMobile;
         console.log("to value: " + to);
         
