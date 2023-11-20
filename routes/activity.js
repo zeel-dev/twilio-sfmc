@@ -159,7 +159,10 @@ exports.execute = function (req, res) {
         const authToken = process.env.authToken;
         const messagingService = process.env.messagingService;
         
-        const to = requestBody.recipient_mobile;
+        const recipientData = requestBody.recipient || {};
+        console.log("recipientData: " + recipientData);
+        const to = recipientData.Phone || recipientData.RecipientMobile || recipientData.BookingUserMobile;
+        console.log("to value: " + to);
         
         const body = requestBody.body;
         const isSendToKustomer = requestBody.isSendToKustomer;
